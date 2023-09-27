@@ -3,22 +3,51 @@ import { styles } from "./styles"
 import { Icon } from "react-native-elements";
 import { colors } from "../../themes/theme";
 
-export const TaskCard = () => {
-  return (
-    <View style={styles.taskCardContainer}>
+type Props = {
+  index: number
+  item: string
+  onPressCheckTask: () => void
+  taskChecked: boolean
+}
+export const TaskCard = ({
+  index,
+  item,
+  taskChecked,
+  onPressCheckTask
+}: Props) => {
 
-      <TouchableOpacity style={styles.checheTaskIcon}>
-        <Icon
-          name='radio-button-unchecked'
-          // name='check-circle'
-          color={colors.produto.blue}
-          selectable
-          size={17.45}
-        />
+
+  return (
+    <View key={index} style={styles.taskCardContainer}>
+
+      <TouchableOpacity
+
+        onPress={onPressCheckTask}
+        style={styles.checkTaskIcon}>
+
+        {taskChecked ? (
+          <Icon
+            type="material"
+            name='radio-button-unchecked'
+            color={colors.produto.blue}
+            selectable
+            size={17.45}
+          />) : (
+          <Icon
+            type="material"
+            name='check-circle'
+            color={colors.produto.purple}
+            style={styles.checkTaskWhite}
+            underlayColor={colors.base.gray100}
+            selectable
+            size={17.45}
+          />
+        )
+        }
       </TouchableOpacity>
 
       <Text style={styles.taskTextContent}>
-        Integer urna interdum massa libero auctor neque turpis turpis semper.
+        {item}
       </Text>
 
       <TouchableOpacity style={styles.taskOption}>

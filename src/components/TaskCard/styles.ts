@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
     gap: 8, 
   },
 
-  checheTaskIcon: {
+  checkTaskIcon: {
     width: 24,
     height: 24
   },
@@ -39,5 +39,13 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center"
   },
+  checkTaskWhite : {
+    // backgroundColor: colors.base.gray100,
+    // borderRadius: 300,
+    // width: 17.45,
+    // height: 17.45,
+    // padding: 0
+
+  }
 
 })
