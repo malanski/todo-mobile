@@ -10,6 +10,7 @@ export const styles = StyleSheet.create({
     justifyContent:"center",
     alignItems:"center",
     paddingTop: 48,
+    
     },
     emptyTaskImage:{
       width: 56
