@@ -1,10 +1,19 @@
 import { Text, View } from "react-native"
 import { styles } from "./styles"
-type Props = {
-  taskListQnty: number
-  checkedTaskQnty: number
-}
-export const TaskCounter = ({taskListQnty, checkedTaskQnty}: Props) => {
+import { TasksContext } from "../../context/TasksContext"
+import { useContext } from "react"
+
+export const TaskCounter = () => {
+
+  const { tasks } = useContext(TasksContext)
+  const tasksAmount = tasks.length
+  let checkedTasksAmount = 0
+
+  tasks.map(task => {
+    
+    if (task.checked) checkedTasksAmount++
+  })
+
   return (
     <View style={styles.taskCounterContainer}>
       <View style={styles.taskCounters}>
@@ -13,7 +22,7 @@ export const TaskCounter = ({taskListQnty, checkedTaskQnty}: Props) => {
           Criadas
         </Text>
         <Text style={styles.taskAmount}>
-          {taskListQnty}
+          {tasksAmount}
         </Text>
       </View>
 
@@ -23,7 +32,7 @@ export const TaskCounter = ({taskListQnty, checkedTaskQnty}: Props) => {
             Concluídas
         </Text>
         <Text style={styles.taskAmount}>
-          {checkedTaskQnty}
+          {checkedTasksAmount}
         </Text>
       </View>
     </View>

@@ -3,7 +3,7 @@ import { styles } from "./styles"
 import { Icon } from "react-native-elements";
 import { colors } from "../../themes/theme";
 import { TasksContext } from "../../context/TasksContext";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 
 interface Props {
   id: number
