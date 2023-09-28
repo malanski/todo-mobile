@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, FlatList, FlatListComponent } from "react-native";
+import { View, Text, ScrollView, FlatList } from "react-native";
 import { styles } from './styles'
 import { AddTask } from "../../components/AddTask";
 import { TaskCounter } from "../../components/TaskCounter";
