@@ -15,6 +15,8 @@ export const styles = StyleSheet.create({
     padding: 16,
     borderRadius: 6,
     fontSize: 16,
+    fontFamily: 'interRegular',
+
     flex: 1, 
   },
 

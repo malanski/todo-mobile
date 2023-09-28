@@ -28,17 +28,19 @@ export const TaskCard = ({
         {taskChecked ? (
           <Icon
             type="material"
-            name='radio-button-unchecked'
-            color={colors.produto.blue}
-            selectable
-            size={17.45}
-          />) : (
-          <Icon
-            type="material"
             name='check-circle'
             color={colors.produto.purple}
             style={styles.checkTaskWhite}
             underlayColor={colors.base.gray100}
+            selectable
+            size={17.45}
+          />
+        ) : (
+
+          <Icon
+            type="material"
+            name='radio-button-unchecked'
+            color={colors.produto.blue}
             selectable
             size={17.45}
           />

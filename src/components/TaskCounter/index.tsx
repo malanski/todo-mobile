@@ -1,7 +1,10 @@
 import { Text, View } from "react-native"
 import { styles } from "./styles"
-
-export const TaskCounter = () => {
+type Props = {
+  taskListQnty: number
+  checkedTaskQnty: number
+}
+export const TaskCounter = ({taskListQnty, checkedTaskQnty}: Props) => {
   return (
     <View style={styles.taskCounterContainer}>
       <View style={styles.taskCounters}>
@@ -10,7 +13,7 @@ export const TaskCounter = () => {
           Criadas
         </Text>
         <Text style={styles.taskAmount}>
-          0
+          {taskListQnty}
         </Text>
       </View>
 
@@ -20,7 +23,7 @@ export const TaskCounter = () => {
             Concluídas
         </Text>
         <Text style={styles.taskAmount}>
-          0
+          {checkedTaskQnty}
         </Text>
       </View>
     </View>

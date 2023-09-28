@@ -6,13 +6,14 @@ export const styles = StyleSheet.create({
   taskCardContainer: {
     alignItems: "center",
     flexDirection: "row",
+    // flex:1,
     backgroundColor: colors.base.gray500,
     paddingVertical: 12,
     paddingLeft: 12,
     paddingRight: 8,
     borderRadius: 8,
     marginBottom: 8,
-    gap: 8, 
+    gap: 8
   },
 
   checkTaskIcon: {
@@ -24,8 +25,13 @@ export const styles = StyleSheet.create({
     display:"flex",
     flex: 1,
     alignItems:"center",
-    fontWeight: 'normal',
+    justifyContent: "center",
+    fontSize: 14,
+    fontWeight: "400", 
     color: colors.base.gray100,
+    fontFamily: 'interRegular',
+    // marginHorizontal: 8,
+    // width: 375
   },
 
   removeTaskIcon: {

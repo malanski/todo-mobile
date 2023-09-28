@@ -1,7 +1,6 @@
 import { StyleSheet } from "react-native";
 
 import { colors } from "../../themes/theme";
-
 export const styles = StyleSheet.create({
   emptyTaskContainer: {
     // flex: 1,
@@ -16,6 +15,8 @@ export const styles = StyleSheet.create({
       width: 56
     },
     emptyTaskTextTitle: {
+      fontFamily: 'interRegular',
+
       marginTop: 16,
       fontWeight: '700',
       color:  colors.base.gray300,
