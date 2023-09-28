@@ -8,6 +8,7 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     // flex:1,
     backgroundColor: colors.base.gray500,
+    borderWidth: 1,
     paddingVertical: 12,
     paddingLeft: 12,
     paddingRight: 8,
@@ -18,11 +19,28 @@ export const styles = StyleSheet.create({
 
   checkTaskIcon: {
     width: 24,
+    alignItems:"center",
+    justifyContent:"center",
     height: 24
   },
 
+  checkedTask : {
+    backgroundColor: colors.produto.purple,
+    borderRadius: 50,
+    width: 17,
+    height: 17,
+    alignItems:"center",
+    justifyContent:"center"
+  },
+
+  unCheckedTask: {
+    width: 17.45,
+    height: 17.45,
+    alignItems:"center",
+    justifyContent:"center"
+  },
+
   taskTextContent: {
-    display:"flex",
     flex: 1,
     alignItems:"center",
     justifyContent: "center",
@@ -33,25 +51,30 @@ export const styles = StyleSheet.create({
     // marginHorizontal: 8,
     // width: 375
   },
+  
+  taskTextContentChecked:{
+    textDecorationLine:'line-through',
+    textDecorationColor: colors.base.gray100,
+    color: colors.base.gray300,
+    flex: 1,
+    alignItems:"center",
+    justifyContent: "center",
+    fontSize: 14,
+    fontWeight: "400", 
+    fontFamily: 'interRegular',
 
-  removeTaskIcon: {
-    width: 12,
-    height: 14
   },
-
   taskOption: {
     width: 32,
     height: 32,
     alignItems: "center",
     justifyContent: "center"
   },
-  checkTaskWhite : {
-    // backgroundColor: colors.base.gray100,
-    // borderRadius: 300,
-    // width: 17.45,
-    // height: 17.45,
-    // padding: 0
 
-  }
+
+  removeTaskIcon: {
+    width: 12,
+    height: 14
+  },
 
 })

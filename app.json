@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "todo-listapp",
-    "slug": "todo-listapp",
+    "name": "todo-mobile",
+    "slug": "todo-mobile",
     "version": "1.0.0",
     "assets": [
       "./assets/fonts/"

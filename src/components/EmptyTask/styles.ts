@@ -16,9 +16,7 @@ export const styles = StyleSheet.create({
     },
     emptyTaskTextTitle: {
       fontFamily: 'interRegular',
-
       marginTop: 16,
-      fontWeight: '700',
       color:  colors.base.gray300,
   },
     emptyTaskText: {

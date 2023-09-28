@@ -20,26 +20,23 @@ export const styles = StyleSheet.create({
   },
 
   taskCounterCreated: {
-    fontWeight: "700", 
-    fontFamily: 'interRegular',
-
+    fontFamily: 'interBold',
+    fontSize: 14,
     color: colors.produto.blue,
+
   },
   taskCounterDone: {
-    fontWeight: "700", 
-    fontFamily: 'interRegular',
-
+    fontFamily: 'interBold',
+    fontSize: 14,
     color: colors.produto.purple,
-  },
 
+  },
   taskAmount: {
     backgroundColor: colors.base.gray400,
     color: colors.base.gray200,
     paddingHorizontal: 8,
     fontSize: 12,
-    fontFamily: 'interRegular',
-    fontWeight: "700", 
-
+    fontFamily: 'interBold',
     borderRadius: 999,
   },
 })

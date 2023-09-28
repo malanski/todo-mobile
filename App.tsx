@@ -2,6 +2,7 @@ import { StatusBar, View } from 'react-native';
 import { Header } from './src/components/Header';
 import { colors } from './src/themes/theme';
 import { Home } from './src/screens/Home/index';
+import { TasksContextProvider } from './src/context/TasksContext';
 
 export default function App() {
   return (
@@ -14,7 +15,10 @@ export default function App() {
         />
         <Header />
       </View>
+    <TasksContextProvider>
       <Home />
+    </TasksContextProvider>
+
   </>
   );
 }
