@@ -24,8 +24,8 @@ Instale as dependências necessárias depois de clonar esse repositório:
 npm install 
 ``` 
   
-## Expo go 
-Vá ate a PlayStore do Google e Instale Expo Go no seu dispositivo mobile(android).
+## Expo go (baixar e instalar em um android)
+Vá ate a PlayStore do Google e instale Expo Go no seu dispositivo mobile(android).
   
 ### Desenvolvimento 
 Para rodar o projeto localmente execute `expo start` através do comando:
@@ -62,5 +62,11 @@ npm start --web
   - package.json
   - tscongif.json
   
+```
+  
+# Dependências
+
+```
+react-native-elements
 ```
 
