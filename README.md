@@ -31,7 +31,6 @@ Clone this repository to your local machine:
 ```bash
 git clone https://github.com/your-username/goaltrackapp.git     
 
-```
 npm install 
 ``` 
   
@@ -40,13 +39,11 @@ Download it on your mobile device to scan the QR code displayed in the terminal 
   
 ### Development 
 To run the project locally run `expo start` using the command:
-
 ```
 npm start 
-```
-  
-Você também pode testar esse aplicativo mobile em um navegador web rodando:
-```
+``
+ 
+You can also test this mobile application in a running web browser:```
 npm start --web
 ```
 
