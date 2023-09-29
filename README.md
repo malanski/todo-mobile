@@ -30,22 +30,22 @@ Install the necessary dependencies after cloning this repository:
 Clone this repository to your local machine:
 ```bash
 git clone https://github.com/your-username/goaltrackapp.git     
-
-npm install 
 ``` 
   
+```npm install 
+```
+
 ## Expo go (baixar e instalar em um android)
 Download it on your mobile device to scan the QR code displayed in the terminal to run the app on your device.  
   
 ### Development 
-To run the project locally run `expo start` using the command:
-```
-npm start 
-``
+To run the project locally run (expo start) using the command:
+
  
-You can also test this mobile application in a running web browser:```
-npm start --web
-```
+```npm start```
+ 
+You can also test this mobile application in a running web browser:
+```npm start --web```
 
 ### Usage
 
