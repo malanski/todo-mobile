@@ -29,8 +29,8 @@ Developed in:
 Install the necessary dependencies after cloning this repository:
 Clone this repository to your local machine:
 ```bash
-git clone https://github.com/your-username/goaltrackapp.git     
-  
+git clone https://github.com/malanski/todo-mobile.git     
+cd todo-mobile
 npm install 
 ```
 
