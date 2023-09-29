@@ -53,7 +53,7 @@ Add tasks by entering their descriptions and tapping the "+" button.
 Mark tasks as completed by tapping the checkbox icon.
 Remove tasks by tapping the trash icon.
 
-## Estrutura
+## Structure
 
 ```
 - root
@@ -79,7 +79,7 @@ Remove tasks by tapping the trash icon.
   
 ```
   
-## Dependências
+## Dependencies
 
 ```
 "dependencies": {
