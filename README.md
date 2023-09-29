@@ -8,7 +8,9 @@ Mobile application for organizing tasks where the user can add and delete tasks 
 - Mark tasks as completed.
 - Remove tasks from the list.
 - Persistent storage of tasks and their completion status.
-  
+
+<img src='./assets/todoMobile.gif'>
+
 ## Technologies 
  
 Developed in:

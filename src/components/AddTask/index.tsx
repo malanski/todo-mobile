@@ -29,7 +29,7 @@ export const AddTask = () => {
 
       <TextInput
         placeholder="Adicione uma nova tarefa"
-        keyboardType="default"
+        // keyboardType="default"
         placeholderTextColor={colors.base.gray300}
         style={styles.taskInput}
         selectionColor={colors.base.gray100}
