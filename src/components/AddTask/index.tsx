@@ -18,7 +18,7 @@ export const AddTask = () => {
     checked: false
   }
 
-  console.log(tasks)
+  // console.log(tasks)
   const handleCreateNewTask = () => {
     setTasks([...tasks, newTask])
     setContentTask('')
@@ -29,7 +29,7 @@ export const AddTask = () => {
 
       <TextInput
         placeholder="Adicione uma nova tarefa"
-        // keyboardType="email-address"
+        keyboardType="default"
         placeholderTextColor={colors.base.gray300}
         style={styles.taskInput}
         selectionColor={colors.base.gray100}

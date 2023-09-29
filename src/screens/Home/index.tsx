@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, FlatList } from "react-native";
+import { View, Text, FlatList } from "react-native";
 import { styles } from './styles'
 import { AddTask } from "../../components/AddTask";
 import { TaskCounter } from "../../components/TaskCounter";
@@ -9,7 +9,7 @@ import { useFonts } from 'expo-font';
 import { TasksContext } from '../../context/TasksContext';
 
 export const Home = () => {
-  const {tasks} = useContext(TasksContext)
+  const { tasks } = useContext(TasksContext)
   const [loaded] = useFonts({
     interRegular: require("../../../assets/fonts/Inter/Inter-Regular.ttf"),
     interBold: require("../../../assets/fonts/Inter/Inter-Bold.ttf"),
@@ -23,31 +23,28 @@ export const Home = () => {
   if (!loaded) {
     return <Text>Carregando fontes...</Text>;
   }
-  
+
   return (
-      <View style={styles.container}>
-        <AddTask />
-        <ScrollView>
-          <TaskCounter/>
+    <View style={styles.container}>
+      <AddTask />
+      <TaskCounter />
 
-          <FlatList 
-            data={tasks}
-            keyExtractor={item => item.id.toString()}
-            showsVerticalScrollIndicator={false}
-            renderItem={({ item }) =>(
-              <TaskCard 
-                id={item.id}
-                key={item.id}
-                content={item.content}
-                checked={item.checked}
-              />
-            )}
-            ListEmptyComponent={()=> (
-              <EmptyTask />  
-            )}
+      <FlatList
+        data={tasks}
+        keyExtractor={item => item.id.toString()}
+        showsVerticalScrollIndicator={false}
+        renderItem={({ item }) => (
+          <TaskCard
+            id={item.id}
+            key={item.id}
+            content={item.content}
+            checked={item.checked}
           />
-        </ScrollView>
-      </View>
-
+        )}
+        ListEmptyComponent={() => (
+          <EmptyTask />
+        )}
+      />
+    </View>
   )
 }

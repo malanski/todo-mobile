@@ -20,8 +20,6 @@ export const TasksContextProvider = ({children}:ITasksContextProviderProps) => {
 
   const [tasks, setTasks] = useState<ITasksProps[]>([])
 
-  
-
   return (
     <TasksContext.Provider
       value={{

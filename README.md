@@ -1,34 +1,44 @@
 # Todo-Mobile  
 
-Aplicativo mobile para organizar tarefas onde o usuário pode adicionar e excluir tarefas e marca-las como concluídas. 
+Mobile application for organizing tasks where the user can add and delete tasks and mark them as completed. 
  
+## Features
+
+- Add new tasks with descriptions.
+- Mark tasks as completed.
+- Remove tasks from the list.
+- Persistent storage of tasks and their completion status.
+  
 ## Technologies 
  
-Desenvolvido em: 
+Developed in:
 - Typescript
-- Com React-Native
-- Usando Expo template 
-- Ambiente Managed
+- With React-Native
+- Using Expo template
+- Managed environment
   
-
-### Requerimentos
+### Requirements
 - node
 - expo
-- expo go (para rodar localmente)
+- expo go (to run locally)
   
  
 ## Instalação  
-Instale as dependências necessárias depois de clonar esse repositório:
-  
+Install the necessary dependencies after cloning this repository:
+Clone this repository to your local machine:
+```bash
+git clone https://github.com/your-username/goaltrackapp.git     
+
 ```
 npm install 
 ``` 
   
 ## Expo go (baixar e instalar em um android)
-Vá ate a PlayStore do Google e instale Expo Go no seu dispositivo mobile(android).
+Download it on your mobile device to scan the QR code displayed in the terminal to run the app on your device.  
   
-### Desenvolvimento 
-Para rodar o projeto localmente execute `expo start` através do comando:
+### Development 
+To run the project locally run `expo start` using the command:
+
 ```
 npm start 
 ```
@@ -38,7 +48,14 @@ Você também pode testar esse aplicativo mobile em um navegador web rodando:
 npm start --web
 ```
 
-### Estrutura
+### Usage
+
+Launch the app on your mobile device.
+Add tasks by entering their descriptions and tapping the "+" button.
+Mark tasks as completed by tapping the checkbox icon.
+Remove tasks by tapping the trash icon.
+
+## Estrutura
 
 ```
 - root
@@ -64,9 +81,17 @@ npm start --web
   
 ```
   
-# Dependências
+## Dependências
 
 ```
-react-native-elements
-```
+"dependencies": {
+    "expo": "~49.0.12",
+    "expo-status-bar": "~1.6.0",
+    "react": "18.2.0",
+    "react-dom": "^18.2.0",
+    "react-native": "0.72.5",
+    "react-native-elements": "^3.4.3"
+  },
+  
+  ```
 
