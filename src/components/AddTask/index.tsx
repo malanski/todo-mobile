@@ -11,7 +11,7 @@ import 'react-native-get-random-values';
 export const AddTask = () => {
   const [contentTask, setContentTask] = useState('')
 
-  const {tasks, setTasks, getData} = useContext(TasksContext)
+  const {tasks, setTasks} = useContext(TasksContext)
 
   // const id = tasks.length > 1 ? (tasks[tasks.length - 1].id + 1) : 1
   const id = uuidv4();

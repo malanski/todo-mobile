@@ -1,16 +1,16 @@
-import { Text, View } from "react-native"
+import { Alert, Text, TouchableOpacity, View } from "react-native"
 import { styles } from "./styles"
 import { TasksContext } from "../../context/TasksContext"
 import { useContext } from "react"
 
 export const TaskCounter = () => {
 
-  const { tasks } = useContext(TasksContext)
+  const { tasks, handleRemoveCheckedTask } = useContext(TasksContext)
   const tasksAmount = tasks.length
   let checkedTasksAmount = 0
 
   tasks.map(task => {
-    
+
     if (task.checked) checkedTasksAmount++
   })
 
@@ -25,11 +25,15 @@ export const TaskCounter = () => {
           {tasksAmount}
         </Text>
       </View>
+      <TouchableOpacity onPress={handleRemoveCheckedTask}>
+        <Text style={styles.taskAmount}>X</Text>
+      </TouchableOpacity>
 
       <View style={styles.taskCounters}>
+
         <Text
           style={styles.taskCounterDone}>
-            Concluídas
+          Concluídas
         </Text>
         <Text style={styles.taskAmount}>
           {checkedTasksAmount}
