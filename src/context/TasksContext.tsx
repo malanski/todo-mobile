@@ -2,6 +2,8 @@ import { useState, createContext, ReactNode, useEffect } from 'react';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import 'react-native-get-random-values';
 import { Alert } from 'react-native';
+import { v4 as uuidv4 } from 'uuid';
+import 'react-native-get-random-values';
 
 export interface ITasksProps {
   id: string
@@ -12,7 +14,10 @@ export interface ITasksProps {
 interface ITasksContext {
   tasks: ITasksProps[]
   setTasks: (task: ITasksProps[]) => void
+  contentTask: string
+  setContentTask: React.Dispatch<React.SetStateAction<string>>
   handleRemoveCheckedTask(): void
+  handleCreateNewTask: () => void
   getData: (tasksData: void) => Promise<void>
 }
 
@@ -23,13 +28,29 @@ interface ITasksContextProviderProps {
 export const TasksContext = createContext({} as ITasksContext)
 
 export const TasksContextProvider = ({ children }: ITasksContextProviderProps) => {
+  const [contentTask, setContentTask] = useState('')
 
   const [tasks, setTasks] = useState<ITasksProps[]>([])
+  const id = uuidv4();
+  // const id = tasks.length > 1 ? (tasks[tasks.length - 1].id + 1) : 1
+
+  const newTask = {
+    id: id,
+    content: contentTask,
+    checked: false
+  }
 
   useEffect(() => {
     getData();
   }, [])
 
+  const handleCreateNewTask = () => {
+    const updatedTasks = [...tasks, newTask]
+    setTasks(updatedTasks)
+    setContentTask('')
+    setData(updatedTasks)
+    console.log(updatedTasks)
+  }
 
   function handleRemoveCheckedTask() {
     Alert.alert('Deletar tarefas concluídas',
@@ -38,13 +59,9 @@ export const TasksContextProvider = ({ children }: ITasksContextProviderProps) =
         {
           text: "Sim",
           onPress: () => {
-            const updateTasks = [...tasks]
-            for (let i = updateTasks.length - 1; i >= 0; i--) {
-              if (updateTasks[i]) {
-                updateTasks.splice(i, 1)
-              }
-            }
-            setTasks(tasks)
+            const updateTasks = tasks.filter(task => !task.checked)
+            setTasks(updateTasks)
+            setData(updateTasks)
           }
         },
         {
@@ -52,6 +69,16 @@ export const TasksContextProvider = ({ children }: ITasksContextProviderProps) =
           style: "cancel"
         }
       ])
+  }
+
+  const setData = async (tasks: ITasksProps[]) => { 
+    try {
+      const jsonValue = JSON.stringify(tasks)
+      await AsyncStorage.setItem('task-key', jsonValue)
+
+    } catch (error) {
+      Alert.alert('Erro ao salvar os dados.', `${error}`)
+    }
   }
 
   const getData = async () => {
@@ -69,6 +96,9 @@ export const TasksContextProvider = ({ children }: ITasksContextProviderProps) =
     <TasksContext.Provider
       value={{
         setTasks,
+        handleCreateNewTask,
+        contentTask,
+        setContentTask,
         handleRemoveCheckedTask,
         getData,
         tasks
