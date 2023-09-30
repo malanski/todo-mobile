@@ -1,4 +1,4 @@
-import { Alert, Text, TouchableOpacity, View } from "react-native"
+import { Text, TouchableOpacity, View } from "react-native"
 import { styles } from "./styles"
 import { TasksContext } from "../../context/TasksContext"
 import { useContext } from "react"
@@ -26,14 +26,17 @@ export const TaskCounter = () => {
           {tasksAmount}
         </Text>
       </View>
+
+      {checkedTasksAmount >= 2 ? (
       <TouchableOpacity onPress={handleRemoveCheckedTask}>
         <Text style={styles.taskAmount}>
           <Icon
             name="list"
             size={20}
-            color={checkedTasksAmount >= 2 ? '#2ab04c' : '#3f4d43'}/>
+            color='#2ab04c'/>
         </Text>
       </TouchableOpacity>
+      ) : ''}
 
       <View style={styles.taskCounters}>
 
