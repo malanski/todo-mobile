@@ -25,7 +25,7 @@ Developed in:
 - expo go (to run locally)
   
  
-## Instalação  
+## Installation  
 Install the necessary dependencies after cloning this repository:
 Clone this repository to your local machine:
 ```bash

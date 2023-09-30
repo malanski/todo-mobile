@@ -6,7 +6,7 @@ import { TasksContext } from "../../context/TasksContext";
 import { useContext } from "react";
 
 interface Props {
-  id: number
+  id: string
   content: string
   checked: boolean
 }
@@ -30,6 +30,7 @@ export const TaskCard = ({
   }
 
   const removeTask = () => {
+
     Alert.alert('Excluir tarefa',
       `Realmente deseja excluir esta atividade?`,
       [
@@ -47,6 +48,8 @@ export const TaskCard = ({
       ]
     )
   }
+
+
   return (
     <View style={styles.taskCardContainer}>
 

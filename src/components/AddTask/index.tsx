@@ -1,16 +1,20 @@
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { View, TextInput, TouchableOpacity, Alert } from "react-native";
 import { styles } from './styles'
 import { colors } from "../../themes/theme";
 import { Icon } from "react-native-elements";
-import { useState, useContext } from 'react';
-import { TasksContext } from "../../context/TasksContext";
+import { useState, useContext, useEffect } from 'react';
+import { TasksContext, ITasksProps } from "../../context/TasksContext";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { v4 as uuidv4 } from 'uuid';
+import 'react-native-get-random-values';
 
 export const AddTask = () => {
   const [contentTask, setContentTask] = useState('')
 
-  const {tasks, setTasks} = useContext(TasksContext)
+  const {tasks, setTasks, getData} = useContext(TasksContext)
 
-  const id = tasks.length > 0 ? (tasks[tasks.length - 1].id + 1) : 1
+  // const id = tasks.length > 1 ? (tasks[tasks.length - 1].id + 1) : 1
+  const id = uuidv4();
 
   const newTask = {
     id: id,
@@ -18,12 +22,24 @@ export const AddTask = () => {
     checked: false
   }
 
-  // console.log(tasks)
+
   const handleCreateNewTask = () => {
-    setTasks([...tasks, newTask])
+    const updatedTasks = [...tasks, newTask]
+    setTasks(updatedTasks)
     setContentTask('')
+    setData(updatedTasks)
+    console.log(updatedTasks)
   }
 
+  const setData = async (tasks: ITasksProps[]) => { 
+    try {
+      const jsonValue = JSON.stringify(tasks)
+      await AsyncStorage.setItem('task-key', jsonValue)
+
+    } catch (error) {
+      Alert.alert('Erro ao salvar os dados.', `${error}`)
+    }
+  }
   return (
     <View style={styles.addTaskContainer}>
 

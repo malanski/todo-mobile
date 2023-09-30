@@ -1,4 +1,4 @@
-import { View, Text, FlatList } from "react-native";
+import { View, Text, FlatList, Alert } from "react-native";
 import { styles } from './styles'
 import { AddTask } from "../../components/AddTask";
 import { TaskCounter } from "../../components/TaskCounter";
@@ -10,10 +10,13 @@ import { TasksContext } from '../../context/TasksContext';
 
 export const Home = () => {
   const { tasks } = useContext(TasksContext)
+  
   const [loaded] = useFonts({
     interRegular: require("../../../assets/fonts/Inter/Inter-Regular.ttf"),
     interBold: require("../../../assets/fonts/Inter/Inter-Bold.ttf"),
   });
+
+
   useEffect(() => {
     if (!loaded) {
       return;
