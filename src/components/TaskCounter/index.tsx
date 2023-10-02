@@ -1,12 +1,14 @@
-import { Text, TouchableOpacity, View } from "react-native"
+import { Modal, Pressable, Text, TouchableOpacity, View } from "react-native"
 import { styles } from "./styles"
 import { TasksContext } from "../../context/TasksContext"
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { Icon } from "react-native-elements"
 
 export const TaskCounter = () => {
 
-  const { tasks, handleRemoveCheckedTask } = useContext(TasksContext)
+  const { tasks, handleRemoveAllCheckedTasks } = useContext(TasksContext)
+  const [modalVisible, setModalVisible] = useState(false);
+
   const tasksAmount = tasks.length
   let checkedTasksAmount = 0
 
@@ -16,9 +18,8 @@ export const TaskCounter = () => {
   })
 
   return (
-    <View style={styles.taskCounterContainer}>
+    <View style={styles.taskCounterContainer} >
       <View style={styles.taskCounters}>
-
         <Text style={styles.taskCounterCreated}>
           Criadas
         </Text>
@@ -28,26 +29,54 @@ export const TaskCounter = () => {
       </View>
 
       {checkedTasksAmount >= 2 ? (
-      <TouchableOpacity onPress={handleRemoveCheckedTask}>
-        <Text style={styles.taskAmount}>
-          <Icon
-            name="list"
-            size={20}
-            color='#2ab04c'/>
-        </Text>
-      </TouchableOpacity>
-      ) : ''}
+        <TouchableOpacity onPress={() => setModalVisible(true)}>
+          <Text style={styles.taskAmount}>
+            <Icon
+              name="list"
+              size={20}
+              color='#2ab04c' />
+          </Text>
+        </TouchableOpacity>
+      ) : <Icon name='list'/>}
 
       <View style={styles.taskCounters}>
-
-        <Text
-          style={styles.taskCounterDone}>
+        <Text style={styles.taskCounterDone}>
           Concluídas
         </Text>
         <Text style={styles.taskAmount}>
           {checkedTasksAmount}
         </Text>
       </View>
+
+      <Modal
+        style={styles.centeredView}
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          setModalVisible(!modalVisible);
+        }}>
+        <View style={styles.modalView}>
+          <View>
+            <Text style={styles.textStyle}>Remover atividades concluídas</Text>
+            <Text style={styles.modalText}>
+              Você realmente deseja remover todas as atividades marcadas como concluídas?
+            </Text>
+          </View>
+
+          <View style={styles.modalOption}>
+            <Pressable
+              onPressIn={handleRemoveAllCheckedTasks}
+              onPressOut={() => setModalVisible(!modalVisible)}>
+              <Text style={styles.button}>Sim</Text>
+            </Pressable>
+
+            <Pressable onPress={() => setModalVisible(!modalVisible)}>
+              <Text style={styles.buttonClose}>Não</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
     </View>
   )
 }

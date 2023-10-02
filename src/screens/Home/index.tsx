@@ -7,6 +7,7 @@ import { TaskCard } from "../../components/TaskCard";
 import { useEffect, useContext } from "react";
 import { useFonts } from 'expo-font';
 import { TasksContext } from '../../context/TasksContext';
+import { Header } from "../../components/Header";
 
 export const Home = () => {
   const { tasks } = useContext(TasksContext)
@@ -28,26 +29,28 @@ export const Home = () => {
   }
 
   return (
-    <View style={styles.container}>
-      <AddTask />
-      <TaskCounter />
-
-      <FlatList
-        data={tasks}
-        keyExtractor={item => item.id.toString()}
-        showsVerticalScrollIndicator={false}
-        renderItem={({ item }) => (
-          <TaskCard
-            id={item.id}
-            key={item.id}
-            content={item.content}
-            checked={item.checked}
-          />
-        )}
-        ListEmptyComponent={() => (
-          <EmptyTask />
-        )}
-      />
+    <View style={styles.home}>
+      <Header />
+      <View style={styles.homeContainer}>
+        <AddTask />
+        <TaskCounter />
+        <FlatList
+          data={tasks}
+          keyExtractor={item => item.id.toString()}
+          showsVerticalScrollIndicator={false}
+          renderItem={({ item }) => (
+            <TaskCard
+              id={item.id}
+              key={item.id}
+              content={item.content}
+              checked={item.checked}
+            />
+          )}
+          ListEmptyComponent={() => (
+            <EmptyTask />
+          )}
+        />
+      </View>
     </View>
   )
 }

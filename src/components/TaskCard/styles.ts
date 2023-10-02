@@ -44,6 +44,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     alignItems:"center",
     justifyContent: "center",
+    textAlign: 'justify',
     fontSize: 14,
     fontWeight: "400", 
     color: colors.base.gray100,
@@ -58,6 +59,7 @@ export const styles = StyleSheet.create({
     color: colors.base.gray300,
     flex: 1,
     alignItems:"center",
+    textAlign: 'justify',
     justifyContent: "center",
     fontSize: 14,
     fontWeight: "400", 
@@ -75,6 +77,72 @@ export const styles = StyleSheet.create({
   removeTaskIcon: {
     width: 12,
     height: 14
+  },
+  centeredView: {
+
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
+  },
+  modalView: {
+    borderWidth: 2,
+    borderColor: 'white',
+    margin: 20,
+    backgroundColor: colors.base.gray600,
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#fff',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  modalOption: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: "space-between",
+    width: '50%'
+  },
+  button: {
+    borderRadius: 100,
+    backgroundColor: colors.produto.blueDark,
+    padding: 10,
+    elevation: 2,
+    color: colors.base.gray200,
+
+  },
+  buttonClose: {
+    backgroundColor: colors.produto.purpleDark,
+    padding: 10,
+    elevation: 2,
+
+    color: colors.base.gray200,
+    borderRadius: 100,
+
+  },
+  textStyle: {
+    color: colors.base.gray200,
+    fontWeight: 'bold',
+    fontSize: 20,
+    textAlign: 'center',
+    textTransform:"uppercase",
+    marginBottom: 32
+  },
+  modalText: {
+    backgroundColor: colors.base.gray500,
+    padding: 10,
+    borderRadius: 8,
+    fontSize: 17,
+
+    marginBottom: 15,
+    textAlign: 'center',
+    color: colors.base.gray200,
+
   },
 
 })

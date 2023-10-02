@@ -1,60 +1,33 @@
-import { Alert, Image, Text, TouchableOpacity, View } from "react-native"
+import { Alert, Image, Modal, Pressable, Text, TouchableOpacity, View } from "react-native"
 import { styles } from "./styles"
 import { Icon } from "react-native-elements";
 import { colors } from "../../themes/theme";
-import { TasksContext } from "../../context/TasksContext";
-import { useContext } from "react";
-
-interface Props {
-  id: string
-  content: string
-  checked: boolean
-}
+import { ITasksProps, TasksContext } from "../../context/TasksContext";
+import { useContext, useState } from 'react';
 
 export const TaskCard = ({
   id,
   content,
   checked
-}: Props) => {
+}: ITasksProps) => {
 
-  const { tasks, setTasks } = useContext(TasksContext)
+  const { handleChecked, removeTask } = useContext(TasksContext)
+  const [modalVisible, setModalVisible] = useState(false);
 
-  const handleChecked = () => {
-    const updatedCheckedTask = tasks.map(task => {
-      if (task.id === id) {
-        return { ...task, checked: !checked }
-      }
-      return task
-    })
-    setTasks(updatedCheckedTask)
+  const handleCheckedTask = () => {
+    handleChecked(id)
   }
 
-  const removeTask = () => {
-
-    Alert.alert('Excluir tarefa',
-      `Realmente deseja excluir esta atividade?`,
-      [
-        {
-          text: 'Sim',
-          onPress: () => {
-            const tasksWithoutTaskRemoved = tasks.filter(task => task.id !== id)
-            setTasks(tasksWithoutTaskRemoved)
-          }
-        },
-        {
-          text: "Não",
-          style: 'cancel'
-        }
-      ]
-    )
+  const handleRemoveTask = () => {
+    removeTask(id)
+    setModalVisible(false)
   }
-
 
   return (
     <View style={styles.taskCardContainer}>
 
       <TouchableOpacity
-        onPress={handleChecked}
+        onPress={handleCheckedTask}
         style={styles.checkTaskIcon}>
 
         {checked ? (
@@ -67,7 +40,6 @@ export const TaskCard = ({
             size={12}
           />
         ) : (
-
           <Icon
             type="material"
             name='radio-button-unchecked'
@@ -85,11 +57,41 @@ export const TaskCard = ({
         {content}
       </Text>
 
-      <TouchableOpacity style={styles.taskOption} onPress={removeTask}>
+      <TouchableOpacity
+        style={styles.taskOption}
+        onPress={() => setModalVisible(true)}>
         <Image
           style={styles.removeTaskIcon}
           source={require('../../../assets/images/trash.png')} />
       </TouchableOpacity>
+
+      <Modal
+        style={styles.centeredView}
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          setModalVisible(!modalVisible);
+        }}>
+        <View style={styles.modalView}>
+          <View>
+            <Text style={styles.textStyle}>Remover atividade</Text>
+            <Text style={styles.modalText}>
+              Você realmente deseja remover esta atividades?
+            </Text>
+          </View>
+
+          <View style={styles.modalOption}>
+            <Pressable onPress={handleRemoveTask}>
+              <Text style={styles.button}>Sim</Text>
+            </Pressable>
+
+            <Pressable onPress={() => setModalVisible(false)}>
+              <Text style={styles.buttonClose}>Não</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
 
     </View>
   )

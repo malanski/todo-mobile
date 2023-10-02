@@ -13,9 +13,9 @@ export default function App() {
             backgroundColor={colors.base.gray700}
             translucent
         />
-        <Header />
       </View>
     <TasksContextProvider>
+      {/* <Header /> */}
       <Home />
     </TasksContextProvider>
 
