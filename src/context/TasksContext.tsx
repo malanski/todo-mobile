@@ -16,8 +16,10 @@ interface ITasksContext {
   setTasks: (task: ITasksProps[]) => void
   contentTask: string
   setContentTask: React.Dispatch<React.SetStateAction<string>>
-  handleRemoveCheckedTask(): void
+  handleRemoveAllCheckedTasks(): void
   handleCreateNewTask: () => void
+  handleChecked: (id: string) => void
+  removeTask: (id: string) => void
   getData: (tasksData: void) => Promise<void>
 }
 
@@ -34,17 +36,16 @@ export const TasksContextProvider = ({ children }: ITasksContextProviderProps) =
   const id = uuidv4();
   // const id = tasks.length > 1 ? (tasks[tasks.length - 1].id + 1) : 1
 
-  const newTask = {
-    id: id,
-    content: contentTask,
-    checked: false
-  }
-
   useEffect(() => {
     getData();
   }, [])
 
   const handleCreateNewTask = () => {
+    const newTask = {
+      id: uuidv4(),
+      content: contentTask,
+      checked: false
+    }
     const updatedTasks = [...tasks, newTask]
     setTasks(updatedTasks)
     setContentTask('')
@@ -52,26 +53,29 @@ export const TasksContextProvider = ({ children }: ITasksContextProviderProps) =
     console.log(updatedTasks)
   }
 
-  function handleRemoveCheckedTask() {
-    Alert.alert('Deletar tarefas concluídas',
-      'Deseja remover todas as tarefas marcadas como concluídas?',
-      [
-        {
-          text: "Sim",
-          onPress: () => {
-            const updateTasks = tasks.filter(task => !task.checked)
-            setTasks(updateTasks)
-            setData(updateTasks)
-          }
-        },
-        {
-          text: "Não",
-          style: "cancel"
-        }
-      ])
+  const handleChecked = (id: string) => {
+    const updatedCheckedTask = tasks.map(task => {
+      if (task.id === id) {
+        return { ...task, checked: !task.checked }
+      }
+      return task
+    })
+    setTasks(updatedCheckedTask)
+    setData(updatedCheckedTask)
   }
 
-  const setData = async (tasks: ITasksProps[]) => { 
+  const removeTask = (id: string) => {
+    const tasksWithoutTaskRemoved = tasks.filter(task => task.id !== id)
+    setTasks(tasksWithoutTaskRemoved)
+  }
+  function handleRemoveAllCheckedTasks() {
+    const updateTasks = tasks.filter(task => !task.checked)
+    setTasks(updateTasks)
+    setData(updateTasks)
+  
+  }
+
+  const setData = async (tasks: ITasksProps[]) => {
     try {
       const jsonValue = JSON.stringify(tasks)
       await AsyncStorage.setItem('task-key', jsonValue)
@@ -97,9 +101,11 @@ export const TasksContextProvider = ({ children }: ITasksContextProviderProps) =
       value={{
         setTasks,
         handleCreateNewTask,
+        handleChecked,
+        removeTask,
         contentTask,
         setContentTask,
-        handleRemoveCheckedTask,
+        handleRemoveAllCheckedTasks,
         getData,
         tasks
       }}>

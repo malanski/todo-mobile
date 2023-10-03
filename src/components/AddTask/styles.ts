@@ -4,8 +4,15 @@ import { colors } from "../../themes/theme";
 
 export const styles = StyleSheet.create({
   addTaskContainer: {
-    flexDirection: 'row',
+    flexDirection: 'column',
+    alignItems: 'center',
     marginTop: -32,
+  },
+  logo: {
+    flexDirection: 'row',
+  },
+  addTaskInputContainer: {
+    flexDirection: 'row',
     gap: 4
   },
 
