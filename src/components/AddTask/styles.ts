@@ -23,7 +23,6 @@ export const styles = StyleSheet.create({
     borderRadius: 6,
     fontSize: 16,
     fontFamily: 'interRegular',
-
     flex: 1, 
   },
 
@@ -34,4 +33,14 @@ export const styles = StyleSheet.create({
     padding: 18,
     borderRadius: 6,
   },
+  addTaskMessage :{
+    color: colors.base.gray100,
+    backgroundColor: colors.base.gray500,
+    marginTop: 8,
+    alignSelf:"stretch",
+    textAlign: 'center',
+    padding: 8,
+    borderRadius: 8,
+
+  }
 })

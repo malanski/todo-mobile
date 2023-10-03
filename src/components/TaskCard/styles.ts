@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
     // flex:1,
-    backgroundColor: colors.base.gray500,
+    backgroundColor: colors.base.gray700,
     borderWidth: 1,
     paddingVertical: 12,
     paddingLeft: 12,
@@ -25,7 +25,7 @@ export const styles = StyleSheet.create({
   },
 
   checkedTask : {
-    backgroundColor: colors.produto.purple,
+    backgroundColor: colors.produto.purple, 
     borderRadius: 50,
     width: 17,
     height: 17,
@@ -120,10 +120,8 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.produto.purpleDark,
     padding: 10,
     elevation: 2,
-
     color: colors.base.gray200,
     borderRadius: 100,
-
   },
   textStyle: {
     color: colors.base.gray200,
@@ -138,7 +136,6 @@ export const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 8,
     fontSize: 17,
-
     marginBottom: 15,
     textAlign: 'center',
     color: colors.base.gray200,

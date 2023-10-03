@@ -46,6 +46,7 @@ export const TasksContextProvider = ({ children }: ITasksContextProviderProps) =
       content: contentTask,
       checked: false
     }
+    
     const updatedTasks = [...tasks, newTask]
     setTasks(updatedTasks)
     setContentTask('')
@@ -67,12 +68,13 @@ export const TasksContextProvider = ({ children }: ITasksContextProviderProps) =
   const removeTask = (id: string) => {
     const tasksWithoutTaskRemoved = tasks.filter(task => task.id !== id)
     setTasks(tasksWithoutTaskRemoved)
+    setData(tasksWithoutTaskRemoved)
   }
+
   function handleRemoveAllCheckedTasks() {
     const updateTasks = tasks.filter(task => !task.checked)
     setTasks(updateTasks)
     setData(updateTasks)
-  
   }
 
   const setData = async (tasks: ITasksProps[]) => {

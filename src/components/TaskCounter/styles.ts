@@ -75,7 +75,8 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: "space-between",
-    width: '100%'
+    width: '50%'
+
   },
   button: {
     borderRadius: 100,
@@ -102,9 +103,12 @@ export const styles = StyleSheet.create({
     marginBottom: 32
   },
   modalText: {
+    backgroundColor: colors.base.gray500,
+    padding: 10,
+    borderRadius: 8,
+    fontSize: 17,
     marginBottom: 15,
     textAlign: 'center',
     color: colors.base.gray200,
-
   },
 })

@@ -1,22 +1,28 @@
-import { View, TextInput, TouchableOpacity, Alert, Image, Keyboard } from "react-native";
+import { View, TextInput, TouchableOpacity, Keyboard, Text } from "react-native";
 import { styles } from './styles'
 import { colors } from "../../themes/theme";
 import { Icon } from "react-native-elements";
-import { useContext } from 'react';
-import { TasksContext  } from "../../context/TasksContext";
+import { useContext, useState } from 'react';
+import { TasksContext } from "../../context/TasksContext";
 
 export const AddTask = () => {
-
+  const [isContentEmpty, setIsContentEmpty] = useState(false)
   const { handleCreateNewTask, contentTask, setContentTask } = useContext(TasksContext)
 
   const handleAddTask = () => {
-    handleCreateNewTask();
-    Keyboard.dismiss();
+    if (contentTask !== '') {
+      handleCreateNewTask();
+      Keyboard.dismiss();
+      setIsContentEmpty(false)
+
+    } else {
+      setIsContentEmpty(true)
+    }
   }
 
   return (
-    <View  style={styles.addTaskContainer}>
-      
+    <View style={styles.addTaskContainer}>
+
       <View style={styles.addTaskInputContainer}>
         <TextInput
           placeholder="Adicione uma nova tarefa"
@@ -28,6 +34,7 @@ export const AddTask = () => {
           onChangeText={content => setContentTask(content)}
           onSubmitEditing={handleAddTask}
         />
+
         <TouchableOpacity
           onPress={handleAddTask}
           style={styles.addTaskButton}>
@@ -38,6 +45,12 @@ export const AddTask = () => {
           />
         </TouchableOpacity>
       </View>
+      {isContentEmpty ? (
+        <Text style={styles.addTaskMessage}>Descreva sua tarefa e clique em +</Text>
+      ) : (
+        <Text></Text>
+      )
+      }
     </View>
   )
 }
